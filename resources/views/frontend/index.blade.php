@@ -263,7 +263,7 @@
 
               </h1>
               <div class="d-md-flex align-items-md-start">
-                <a href="contacts-v1.html"
+                <a href="/register"
                   class="btn btn-lg btn-primary flex-shrink-0 me-md-4 mb-md-0 mb-sm-4 mb-3">Create an account</a>
                 <p class="d-lg-block d-none mb-0 ps-md-3">Securewaybill is a leading full-service digital platform, that
                   help you secure a waybill transaction, either as a seller or a buyer.</p>

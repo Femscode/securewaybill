@@ -266,7 +266,7 @@
                   </div>
                 </div>
               </div>
-              <div class="col-6 mb-4">
+              <div class="col-sm-6 mb-6">
                 <label for="password" class="form-label fs-base">Password</label>
                 <div class="password-toggle">
                   <input type="password" name='password' id="password" class="form-control form-control-lg" required>

@@ -17,8 +17,6 @@ use App\Http\Controllers\LoginWithGoogleController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
 Route::get('/', [BusinessController::class, 'index'])->name('homepage');
-Route::any('confirm_account_details', [App\Http\Controllers\FunGiveAwayController::class, 'confirm_account_details'])->name('confirm_account_details');
-
 
 Route::get('/asset-location', function () {
     $publicPath = public_path();
@@ -72,19 +70,19 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     // Route::get('/', [App\Http\Controllers\FrontendController::class, 'index'])->name('home');
-    Route::get('/my-waybills', [App\Http\Controllers\WayBillController::class, 'mywaybills'])->name('mywaybills');
-    Route::get('/createwaybill', [App\Http\Controllers\WayBillController::class, 'createwaybill'])->name('createwaybill');
-    Route::get('/make-payment/{id}', [App\Http\Controllers\WayBillController::class, 'makepayment'])->name('makepayment');
-    Route::post('/paywaybill', [App\Http\Controllers\WayBillController::class, 'paywaybill'])->name('paywaybill');
-    Route::post('/savewaybill', [App\Http\Controllers\WayBillController::class, 'savewaybill'])->name('savewaybill');
-    Route::any('/retrieveclient', [App\Http\Controllers\WayBillController::class, 'retrieveclient'])->name('retrieveclient');
-    Route::any('/deletewaybill/{id}', [App\Http\Controllers\WayBillController::class, 'deletewaybill'])->name('deletewaybill');
-    Route::any('/cancelwaybill/{id}', [App\Http\Controllers\WayBillController::class, 'cancelwaybill'])->name('cancelwaybill');
-    Route::any('/uncancelwaybill/{id}', [App\Http\Controllers\WayBillController::class, 'uncancelwaybill'])->name('uncancelwaybill');
-    Route::any('/marksent/{id}', [App\Http\Controllers\WayBillController::class, 'marksent'])->name('marksent');
-    Route::any('/markreceived/{id}', [App\Http\Controllers\WayBillController::class, 'markreceived'])->name('markreceived');
+    Route::get('/my-waybills', [WaybillController::class, 'mywaybills'])->name('mywaybills');
+    Route::get('/createwaybill', [WaybillController::class, 'createwaybill'])->name('createwaybill');
+    Route::get('/make-payment/{id}', [WaybillController::class, 'makepayment'])->name('makepayment');
+    Route::post('/paywaybill', [WaybillController::class, 'paywaybill'])->name('paywaybill');
+    Route::post('/savewaybill', [WaybillController::class, 'savewaybill'])->name('savewaybill');
+    Route::any('/retrieveclient', [WaybillController::class, 'retrieveclient'])->name('retrieveclient');
+    Route::any('/deletewaybill/{id}', [WaybillController::class, 'deletewaybill'])->name('deletewaybill');
+    Route::any('/cancelwaybill/{id}', [WaybillController::class, 'cancelwaybill'])->name('cancelwaybill');
+    Route::any('/uncancelwaybill/{id}', [WaybillController::class, 'uncancelwaybill'])->name('uncancelwaybill');
+    Route::any('/marksent/{id}', [WaybillController::class, 'marksent'])->name('marksent');
+    Route::any('/markreceived/{id}', [WaybillController::class, 'markreceived'])->name('markreceived');
    //withdrawer
-    Route::any('/withdraw/{id}', [App\Http\Controllers\WayBillController::class, 'withdraw'])->name('withdraw');
+    Route::any('/withdraw/{id}', [WaybillController::class, 'withdraw'])->name('withdraw');
     Route::any('confirm_account', [HomeController::class, 'confirm_account'])->name('confirm_account');
     Route::any('make_transfer', [HomeController::class, 'make_transfer'])->name('make_transfer');
     Route::any('make_withdraw', [HomeController::class, 'make_withdraw'])->name('make_withdraw');
