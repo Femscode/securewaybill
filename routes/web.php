@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\BulkSMSController;
 use App\Http\Controllers\FundingController;
+use App\Http\Controllers\WaybillController;
 use App\Http\Controllers\BusinessController;
 use App\Http\Controllers\SubscriptionController;
 use App\Http\Controllers\LoginWithGoogleController;
@@ -251,7 +252,7 @@ Route::middleware(['auth'])->group(function () {
         Route::any('/admin_delete_duplicate/{type}/{id}', [App\Http\Controllers\SubscriptionController::class, 'admin_delete_duplicate'])->name('admin_delete_duplicate');
     });
 });
-Route::get('/{slug}', [App\Http\Controllers\WaybillController::class, 'slug'])->name('slug')->middleware('auth');
+Route::get('/{slug}', [WaybillController::class, 'slug'])->name('slug')->middleware('auth');
 
 //business domain end
 //the subdomains

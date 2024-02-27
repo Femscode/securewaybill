@@ -533,26 +533,26 @@
           <div class="align-self-center ps-lg-0 ps-md-4">
             <h4 class="mb-lg-4 mb-3 fs-base fw-normal text-body">SECUREWAYBILL</h4>
             <h3 class="h2 mb-lg-4 mb-3">Don't be the next victim!</h3>
-            <p class="mb-lg-4 mb-3">Odio mus adipiscing nunc sed viverra massa aliquam sit vestibulum maecenas arcu adipiscing tincidunt at velit pharetra varius sit.</p>
+            <p class="mb-lg-4 mb-3">Protect your money/goods today!</p>
          
             <ul class="mb-lg-4 mb-3 fs-sm text-muted list-inline" style="max-width: 19.125rem;">
               <li class="list-inline-item me-1">
-                Product Strategy
+                Funds Protection
                 <span class="ms-1">/</span>
               </li>
               <li class="list-inline-item me-1">
-                Front end Development
+                Goods Protection
                 <span class="ms-1">/</span>
               </li>
               <li class="list-inline-item me-1">
-                Systems Design
+                Buyer Protection
                 <span class="ms-1">/</span>
               </li>
               <li class="list-inline-item me-1">
-                Web Development
+                Seller Protection
               </li>
             </ul>
-            <a href="#" class="btn btn-lg btn-outline-primary">Read More</a>
+            <a href="#" class="btn btn-lg btn-outline-primary">Learn More</a>
           </div>
         </div>
       </div>
