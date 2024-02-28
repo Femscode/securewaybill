@@ -380,9 +380,9 @@
           <div class="step-body d-flex align-items-center ps-xl-5">
             <div class="rellax d-none d-lg-block flex-shrink-0 mx-4 mx-xl-5" data-rellax-percentage="0.5"
               data-rellax-speed="-0.5" data-disable-parallax-down="lg" style="transform: translate3d(25px, 54px, 0px);">
-              <img src="assets/img/landing/online-courses/steps/04-dark.svg" class="d-dark-mode-none" width="306"
+              <img src="assets/img/landing/online-courses/steps/01-dark.svg" class="d-dark-mode-none" width="306"
                 alt="Illustration">
-              <img src="assets/img/landing/online-courses/steps/04-light.svg" class="d-none d-dark-mode-block"
+              <img src="assets/img/landing/online-courses/steps/01-light.svg" class="d-none d-dark-mode-block"
                 width="306" alt="Illustration">
             </div>
             <div class="rellax ps-md-4 ps-xl-5" data-rellax-percentage="0.5" data-rellax-speed="0.6"
@@ -412,6 +412,7 @@
                 <div class="card h-100 border-0 shadow-sm p-md-2 p-lg-4">
                   <div class="card-body d-flex align-items-center">
                     <div class="bg-primary shadow-primary rounded-3 flex-shrink-0 p-3">
+                      
                       <img src="assets/img/about/icons/headset-light.svg" class="d-block m-1" width="40" alt="Icon">
                     </div>
                     <div class="ps-4 ms-lg-3">
@@ -490,11 +491,11 @@
               <div class="px-md-4 position-relative zindex-5">
                 <div class="d-sm-flex align-items-start justify-content-between">
                   <div class="text-center text-sm-start me-sm-4">
-                    <div class="lead fw-semibold text-light text-uppercase mb-2">Oct 2024</div>
-                    <h3 class="h1 text-light">Online Fraudulent Research</h3>
+                    <div class="lead fw-semibold text-light text-uppercase mb-2">Dear Vendor,</div>
+                    <h3 class="h1 text-light">DO NOT GET SCAMMED!</h3>
                   </div>
                   <div class="d-table bg-white rounded-3 p-4 flex-shrink-0 mx-auto mx-sm-0">
-                    <img src="assets/img/landing/conference/qr.png" width="102" alt="QR Code">
+                    {{-- <img src="assets/img/landing/conference/qr.png" width="102" alt="QR Code"> --}}
                   </div>
                 </div>
                 {{-- <div class="d-flex flex-column flex-sm-row align-items-center pt-4 mt-2">
@@ -603,11 +604,7 @@
                     <img src="assets/img/landing/digital-agency/services/02.png" width="200" alt="Web Development"
                       class="me-md-4 mb-md-0 mb-3">
                     <div class="ps-md-3">
-                      <p class="mb-0">Vitae varius euismod egestas egestas lacus. Augue vitae arcu sollicitudin metus
-                        iaculis amet, eu at amet. Netus pulvinar tristique ridiculus sed. Viverra ut viverra aenean
-                        nisl. Tortor lorem cum congue a. Orci mattis massa tortor magna massa nisi, aliquet risus.
-                        Ornare cras aenean pellentesque quam pulvinar at. Libero mollis tortor erat sed. Adipiscing
-                        lectus nisi commodo vel. Id augue vitae, hendrerit iaculis.</p>
+                      <p class="mb-0">Your clients needs to register on SECUREWAYBILL, so you both can get protected.</p>
                     </div>
                   </div>
                 </div>
@@ -629,10 +626,7 @@
                     <img src="assets/img/landing/digital-agency/services/03.png" width="200"
                       alt="Application Development" class="me-md-4 mb-md-0 mb-3">
                     <div class="ps-md-3">
-                      <p class="mb-0">Morbi tristique justo, ut ac facilisi vel. Faucibus tortor libero commodo maecenas
-                        commodo sed. Sapien, vitae senectus turpis enim habitasse ipsum justo. Sagittis vel tortor velit
-                        dapibus dictum facilisis dictumst aliquam. Et, tempus euismod non semper vitae egestas semper
-                        eget turpis. Eros, pellentesque sed ut faucibus ac egestas leo metus.</p>
+                      <p class="mb-0">Definately, you can cancel a waybill which needs to be approved by both parties.</p>
                     </div>
                   </div>
                 </div>
@@ -653,11 +647,7 @@
                     <img src="assets/img/landing/digital-agency/services/04.png" width="200" alt="Strategy"
                       class="me-md-4 mb-md-0 mb-3">
                     <div class="ps-md-3">
-                      <p class="mb-0">Non bibendum mauris velit at enim. Vel tellus nunc malesuada pellentesque feugiat
-                        nibh mauris blandit. Tempus, ut vulputate feugiat quis molestie sit eu blandit rhoncus. Iaculis
-                        eget magna sit eget eget massa. Diam nunc dolor tristique lectus imperdiet. Nunc, vitae etiam
-                        venenatis arcu turpis sollicitudin amet sit. Ac dapibus non erat sed. Auctor eleifend mattis
-                        scelerisque gravida felis nibh. Habitant nascetur turpis ullamcorper.</p>
+                      <p class="mb-0">We are currently working of including logistic service.</p>
                     </div>
                   </div>
                 </div>
@@ -678,10 +668,7 @@
                     <img src="assets/img/landing/digital-agency/services/05.png" width="200" alt="Digital Advertising"
                       class="me-md-4 mb-md-0 mb-3">
                     <div class="ps-md-3">
-                      <p class="mb-0">Nulla odio diam, arcu dictum neque nec cursus. Vel, aliquam nisl ridiculus sed.
-                        Pulvinar lectus ac pellentesque sollicitudin tristique aliquet ullamcorper in eu. Tincidunt
-                        porta magna faucibus neque, nunc gravida sagittis. Ut tellus sed odio laoreet. Molestie sit
-                        viverra maecenas nisl felis consequat.</p>
+                      <p class="mb-0">No withdrawal will take place without the concept of both parties.</p>
                     </div>
                   </div>
                 </div>

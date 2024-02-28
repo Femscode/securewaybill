@@ -5,8 +5,6 @@
 
 @section('content')
 
-<div class="content container-fluid" style="margin-top: -17rem;">
-  <!--begin::Container-->
   <div id="kt_app_content" class="app-content  flex-column-fluid ">
     <!--begin::Profile Account Information-->
     <div class="row">
@@ -128,8 +126,7 @@
     </div>
     <!--end::Profile Account Information-->
   </div>
-  <!--end::Container-->
-</div>
+  
 @endsection
 
 @section('script')

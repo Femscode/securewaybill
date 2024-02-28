@@ -1,10 +1,10 @@
 @extends('dashboard.master')
 @section('content')
-<div class="content container-fluid" style="margin-top: -17rem;">
+<section class="section dashboard">
 
 
 
-    <div class="flex-row-fluid ml-lg-8">
+    <div class="flex-row-fluid ml-lg-8 ">
         <!--begin::Card-->
         <div class="card card-custom">
             <!--begin::Header-->
@@ -121,10 +121,10 @@
                                         <i class="bi-cart"></i>
                                     </span>
                                 </div>
-                                <div class="">
+                               
                                     <input name='product_name' class="form-control form-control-lg form-control-solid"
                                         type="text" placeholder="Iphone XMas" />
-                                </div>
+                             
                             </div>
                         </div>
                     </div>
@@ -205,7 +205,7 @@
         </div>
         <!--end::Card-->
     </div>
-</div>
+</section>
 @endsection
 @section('script')
 <script>

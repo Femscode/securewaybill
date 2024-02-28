@@ -156,7 +156,7 @@ class HomeController extends Controller
                 $data['notification'] = $notification;
             }
             $data['waybills'] = Waybill::where('user_id', $user->id)->orWhere('client_id', $user->id)->count();
-            $data['activities'] = Activity::where('user_id', $user->id)->count();
+            $data['activities'] = Activity::where('user_id', $user->id)->latest()->get();
             $data['transactions'] = Transaction::where('user_id',$user->id)->get();
             // $data['withdrawals'] = Withdrawal::where('user_id',$user->id)->get();
             //    dd($data);

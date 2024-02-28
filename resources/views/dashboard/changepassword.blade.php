@@ -1,9 +1,6 @@
 @extends('dashboard.master')
 @section('content')
 
-<div class="content container-fluid" style="margin-top: -17rem;">
-
-    <!--begin::Content-->
     <div id="kt_app_content" class="app-content  flex-column-fluid ">
       
            
@@ -100,8 +97,7 @@
             </div>
          
     </div>
-    <!--end::Content-->
-</div>
+   
 @endsection  
 @section('script')
 <script>

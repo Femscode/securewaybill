@@ -8,14 +8,6 @@
 @section('content')
 
 
-<!-- End Content -->
-
-
-
-<!-- Content -->
-<div class="content container-fluid" style="margin-top: -17rem;">
-
-
     <div style='border-radius:5px' class='card p-2'>
 
         <div class="card-header card-header-content-between">
@@ -246,15 +238,6 @@
         </table>
     </div>
 
-
-
-
-
-    <!-- End Card -->
-</div>
-<!-- End Content -->
-
-<!-- Footer -->
 
 
 @endsection

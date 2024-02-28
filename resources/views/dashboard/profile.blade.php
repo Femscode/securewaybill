@@ -1,8 +1,6 @@
 @extends('dashboard.master')
 @section('content')
 
-<div class="content container-fluid" style="margin-top: -17rem;">
-
 
     <div class="flex-row-fluid ml-lg-8">
         <!--begin::Card-->
@@ -133,7 +131,6 @@
         </div>
         <!--end::Card-->
     </div>
-</div>
 @endsection
 @section('script')
 <script>
