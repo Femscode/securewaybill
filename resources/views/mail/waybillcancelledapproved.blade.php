@@ -53,7 +53,7 @@
                             <p>If you did not initiate this transaction, click here to report action</p>
                             <a href="https://wa.me/2349058744473?text=Hi,%20I%20am%20here%20to%20report%20a%20transaction%20on%20SECUREWAYBILL..."
                                 rel="noopener" target="_blank" rel="noopener"
-                                style="text-decoration:none;display:inline-block;text-align:center;padding:0.75575rem 1.3rem;font-size:0.925rem;line-height:1.5;border-radius:0.35rem;color:#ffffff;background-color:red;border:0px;margin-right:0.75rem!important;font-weight:600!important;outline:none!important;vertical-align:middle"
+                                style="text-decoration:none;display:inline-block;text-align:center;padding:0.75575rem 1.3rem;font-size:0.925rem;line-height:1.5;border-radius:0.35rem;color:#ffffff;background-color:#dc3545;border:0px;margin-right:0.75rem!important;font-weight:600!important;outline:none!important;vertical-align:middle"
                                 target="_blank">Report Action</a>
                         </div>
 

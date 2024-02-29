@@ -219,6 +219,8 @@ class WaybillController extends Controller
         $data['user'] = $user = Auth::user();
         $data['waybill'] = $waybill = Waybill::where('reference', $slug)->first();
         $data['active'] = 'waybill';
+        $data['activities'] = Activity::where('user_id', $user->id)->where('waybill_id', $waybill->uid)->latest()->get();
+            
         $cancel = CancelWaybill::where('waybill_id', $waybill->uid)->get();
         if (count($cancel) == 1) {
 

@@ -36,7 +36,8 @@
                                 </div>
                                 <div class="ps-3">
                                     <h6>{{ number_format($waybills) }}</h6>
-                                    <a href='/createwaybill' class="text-primary small pt-1 fw-bold">Create Waybill</a>
+                                    <a href='/createwaybill' class="text-primary small pt-1 fw-bold">Create Waybill→</a>
+                                    <a href='/my-waybills' class="text-primary small pt-1 fw-bold">View Waybills→</a>
 
                                 </div>
                             </div>
@@ -60,7 +61,7 @@
                                 <div class="ps-3">
                                     <h6>{{ number_format(count($transactions)) }}</h6>
                                     <a href='/transactions' class="text-success small pt-1 fw-bold">View
-                                        transactions</a>
+                                        transactions→</a>
 
                                 </div>
                             </div>

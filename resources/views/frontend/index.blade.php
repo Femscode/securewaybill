@@ -247,7 +247,7 @@
 
               <!-- Video popup btn -->
               <div class="d-inline-flex align-items-center position-relative mb-3">
-                <a href="https://www.youtube.com/watch?v=zPo5ZaH6sW8"
+                <a href="https://www.youtube.com/watch?v=qRWpvcjpQNw"
                   class="btn btn-video btn-icon btn-lg flex-shrink-0 me-3 stretched-link" data-bs-toggle="video"
                   aria-label="Play video">
                   <i class="bx bx-play"></i>
@@ -266,7 +266,7 @@
                 <a href="/register"
                   class="btn btn-lg btn-primary flex-shrink-0 me-md-4 mb-md-0 mb-sm-4 mb-3">Create an account</a>
                 <p class="d-lg-block d-none mb-0 ps-md-3">Securewaybill is a leading full-service digital platform, that
-                  help you secure a waybill transaction, either as a seller or a buyer.</p>
+                  help you secure an online transaction, either as a seller or a buyer.</p>
               </div>
             </div>
 
@@ -308,7 +308,7 @@
             </div>
             <div class="rellax ps-md-4 ps-xl-5" data-rellax-percentage="0.5" data-rellax-speed="0.4"
               data-disable-parallax-down="lg" style="transform: translate3d(3px, -5px, 0px);">
-              <h3 class="h4">Buyer and seller makes agreement.</h3>
+              <h3 class="h4">Negotiation and Agreement.</h3>
               <p class="mb-0">First, you make agreement with your buyer/seller on a product and the amount to be paid.
               </p>
             </div>
@@ -328,8 +328,8 @@
             </div>
             <div class="rellax ps-md-4 ps-xl-5" data-rellax-percentage="0.5" data-rellax-speed="0.5"
               data-disable-parallax-down="lg" style="transform: translate3d(4px, 8px, 0px);">
-              <h3 class="h4">Buyer Creates Waybill</h3>
-              <p class="mb-0">Buyer proceed to create a waybill and make payment for the waybill.</p>
+              <h3 class="h4">Waybill Creation and Payment</h3>
+              <p class="mb-0">Buyers initiate the process by creating a waybill and making the necessary payment to ensure a secure transaction.</p>
             </div>
           </div>
         </div>
@@ -347,8 +347,8 @@
             </div>
             <div class="rellax ps-md-4 ps-xl-5" data-rellax-percentage="0.5" data-rellax-speed="0.4"
               data-disable-parallax-down="lg" style="transform: translate3d(3px, 17px, 0px);">
-              <h3 class="h4">Seller deliver the goods</h3>
-              <p class="mb-0">Seller receives a notification of the waybill created and delivery the good to the buyer.
+              <h3 class="h4">Notification and Delivery</h3>
+              <p class="mb-0">Sellers are promptly notified upon waybill creation. They then proceed to deliver the purchased goods to the buyer.
               </p>
             </div>
           </div>
@@ -367,9 +367,8 @@
             </div>
             <div class="rellax ps-md-4 ps-xl-5" data-rellax-percentage="0.5" data-rellax-speed="0.6"
               data-disable-parallax-down="lg" style="transform: translate3d(5px, 42px, 0px);">
-              <h3 class="h4">Buyer inspect and approve good received.</h3>
-              <p class="mb-0">The buyer then confirm the originality of the product ordered and proceed to approve the
-                waybill.</p>
+              <h3 class="h4">Product Confirmation and Approval.</h3>
+              <p class="mb-0">Buyers meticulously inspect the received product, confirming its originality. Once satisfied, they proceed to approve the waybill.</p>
             </div>
           </div>
         </div>
@@ -387,8 +386,8 @@
             </div>
             <div class="rellax ps-md-4 ps-xl-5" data-rellax-percentage="0.5" data-rellax-speed="0.6"
               data-disable-parallax-down="lg" style="transform: translate3d(5px, 42px, 0px);">
-              <h3 class="h4">Seller get credited.</h3>
-              <p class="mb-0">We then proceed to pay seller for the goods.</p>
+              <h3 class="h4">Payment Disbursement.</h3>
+              <p class="mb-0">Following buyer approval, SecureWaybill takes action by promptly disbursing the agreed-upon payment to the seller for the delivered goods.</p>
             </div>
           </div>
         </div>
@@ -412,8 +411,14 @@
                 <div class="card h-100 border-0 shadow-sm p-md-2 p-lg-4">
                   <div class="card-body d-flex align-items-center">
                     <div class="bg-primary shadow-primary rounded-3 flex-shrink-0 p-3">
-                      
-                      <img src="assets/img/about/icons/headset-light.svg" class="d-block m-1" width="40" alt="Icon">
+                      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="40" viewBox="0 0 24 24" version="1.1" class="kt-svg-icon">
+                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                            <rect id="bound" x="0" y="0" width="24" height="24"/>
+                            <path d="M4,4 L11.6314229,2.5691082 C11.8750185,2.52343403 12.1249815,2.52343403 12.3685771,2.5691082 L20,4 L20,13.2830094 C20,16.2173861 18.4883464,18.9447835 16,20.5 L12.5299989,22.6687507 C12.2057287,22.8714196 11.7942713,22.8714196 11.4700011,22.6687507 L8,20.5 C5.51165358,18.9447835 4,16.2173861 4,13.2830094 L4,4 Z" id="Path-50" fill="#FFFFFF" opacity="0.3"/>
+                            <path d="M11.1750002,14.75 C10.9354169,14.75 10.6958335,14.6541667 10.5041669,14.4625 L8.58750019,12.5458333 C8.20416686,12.1625 8.20416686,11.5875 8.58750019,11.2041667 C8.97083352,10.8208333 9.59375019,10.8208333 9.92916686,11.2041667 L11.1750002,12.45 L14.3375002,9.2875 C14.7208335,8.90416667 15.2958335,8.90416667 15.6791669,9.2875 C16.0625002,9.67083333 16.0625002,10.2458333 15.6791669,10.6291667 L11.8458335,14.4625 C11.6541669,14.6541667 11.4145835,14.75 11.1750002,14.75 Z" id="check-path" fill="#FFFFFF"/>
+                        </g>
+                    </svg>
+                     
                     </div>
                     <div class="ps-4 ms-lg-3">
                       <h3 class="display-10 mb-1">Maximum Security</h3>
@@ -477,8 +482,8 @@
     <section class="container pb-5 mb-2 mb-md-4 mb-lg-5 mt-n3 mt-lg-0">
       <div class="row pt-xl-2 pb-md-3">
         <div class="col-lg-5 mb-4 mb-lg-0">
-          <h2 class="h2 text-center text-sm-start mb-4">Do you know that an average of 2,500 people get scammed online everyday?</h2>
-          <p class="pb-2 pb-lg-4 pb-xl-5 mb-3">Ecommerce is a wide space, made life easier, but it also comes with it disadvantages, of which fake seller/buyer constitute to about 75% of the fraudulent space.</p>
+          <h2 class="h2 text-center text-sm-start mb-4">Are you aware that, on average, 2,500 individuals fall victim to online scams every day?</h2>
+          <p class="pb-2 pb-lg-4 pb-xl-5 mb-3">With 75% attributed to fake sellers/buyers. In the vast space of e-commerce, risks abound. SECUREWAYBILL prioritize security, offering a safe haven for your transactions, combating fraud and ensuring peace of mind.</p>
          
         </div>
         <div class="col-xl-6 col-lg-7 offset-xl-1 position-relative">
@@ -521,7 +526,7 @@
       </div>
     </section>
 
-    <section class="container mb-5 pb-lg-5 pb-md-4 pb-3">
+    {{-- <section class="container mb-5 pb-lg-5 pb-md-4 pb-3">
       
       <!-- Project item -->
       <div class="row gy-4 mb-4 pb-md-3 pb-2">
@@ -558,7 +563,7 @@
         </div>
       </div>
 
-    </section>
+    </section> --}}
     
     <section class="container mb-5 pb-2 pb-md-4 pb-lg-5">
       <div class="card border-0 bg-secondary p-md-5 px-sm-2 pt-4 pb-3">
