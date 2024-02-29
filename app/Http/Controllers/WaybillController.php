@@ -167,7 +167,7 @@ class WaybillController extends Controller
             $env = env('FLW_PUBLIC_KEY');
 
             $data['public_key'] = $env;
-            $data['callback_url'] = 'https://vtubiz.com/payment/callback';
+            $data['callback_url'] = 'https://securewaybill.com/payment/callback';
 
 
             return view('dashboard.pay_with_card', $data);
@@ -178,7 +178,7 @@ class WaybillController extends Controller
             $last_name = end($str_name);
             // return view('dashboard.direct_transfer',$data);  
             // $env = User::where('email', 'fasanyafemi@gmail.com')->first()->remember_token;
-            $trx_ref = Str::random(7);
+            $trx_ref = $waybill->uid;
 
             $response = Http::withHeaders([
                 'Content-Type' => 'application/json',
