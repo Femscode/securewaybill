@@ -21,7 +21,7 @@
                                     <h6>ACTIONS</h6>
                                 </li>
 
-                                <li><a class="dropdown-item" href="/createwaybill">Create Waybill</a></li>
+                                <li><a class="dropdown-item" href="/createwaybill">Create Waybill</a></li><br>
                                 <li><a class="dropdown-item" href="/my-waybills">View Waybills</a></li>
                         
                             </ul>

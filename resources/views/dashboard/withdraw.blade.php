@@ -5,7 +5,6 @@
 
 @section('content')
 
-<div class="content container-fluid" style="margin-top: -17rem;">
 
     <div id="kt_app_content" class="app-content  flex-column-fluid ">
         <!--begin::Container-->
@@ -284,8 +283,6 @@
     </div>
         <!--end::Container-->
     </div>
-</div>
-
 @endsection
 
 @section('script')
