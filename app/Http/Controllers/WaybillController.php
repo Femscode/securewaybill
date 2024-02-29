@@ -2,18 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Activity;
 use App\Models\User;
 use App\Models\Waybill;
+use App\Models\Activity;
 use Illuminate\Support\Str;
 use App\Models\Notification;
 use Illuminate\Http\Request;
 use App\Models\CancelWaybill;
+use App\Traits\TransactionTrait;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 
 class WaybillController extends Controller
 {
+    use TransactionTrait;
     public function mywaybills()
     {
         $data['user'] = $user = Auth::user();
@@ -254,8 +256,8 @@ class WaybillController extends Controller
         $user = Auth::user();
         $waybill->status = 2;
         $waybill->save();
-        $title = "Waybill ". $waybill->reference. "marked sent";
-        $details = "Product :".$waybill->product_name. "Amount :". $waybill->totalamount;
+        $title = "Waybill Sent";
+        $details = "Product : ".$waybill->product_name. " (".$waybill->reference.") Amount :". $waybill->totalamount;
         $this->create_activity($waybill->uid, $user->id,$title, $details,2);
         return redirect()->back()->with('message', 'Waybill has been marked sent to your client. Once your client approve the receipient of waybill, you can then withdraw your funds!');
     }
@@ -303,8 +305,8 @@ class WaybillController extends Controller
         $user = Auth::user();
         $waybill->status = 3;
         $waybill->save();
-        $title = "Waybill ". $waybill->reference. "marked received";
-        $details = "Product :".$waybill->product_name. "Amount :". $waybill->totalamount;
+        $title = "Waybill Received";
+        $details = "Product : ".$waybill->product_name." (".$waybill->reference.") Amount :". $waybill->totalamount;
         $this->create_activity($waybill->uid, $user->id,$title, $details,3);
         return redirect()->back()->with('message', 'Waybill has been marked received. Your client can now withdraw funds!');
     }
@@ -328,8 +330,8 @@ class WaybillController extends Controller
                 if ($cancel[0]->user_id == $user->id) {
                     return redirect()->back()->with('message', 'Waybill Cancelled, waiting for the approval of your client!');
                 } else {
-                    $title = "Waybill ". $waybill->reference. " canceled";
-                    $details = "Product :".$waybill->product_name. " Amount :". $waybill->totalamount;
+                    $title = "Waybill Cancellation Approved";
+                    $details = "Product : ".$waybill->product_name.  " (".$waybill->reference.") Amount :". $waybill->totalamount;
                     $this->create_activity($waybill->uid, $user->id,$title, $details,4);
                    
                     CancelWaybill::create(['waybill_id' => $waybill->uid, 'user_id' => $user->id]);
@@ -338,8 +340,8 @@ class WaybillController extends Controller
             }
 
             CancelWaybill::create(['waybill_id' => $waybill->uid, 'user_id' => $user->id]);
-            $title = "Waybill ". $waybill->reference. "canceled";
-            $details = "Product :".$waybill->product_name. "Amount :". $waybill->totalamount;
+            $title = "Waybill Canceled";
+            $details = "Product : ".$waybill->product_name.  " (".$waybill->reference.") Amount :". $waybill->totalamount;
             $this->create_activity($waybill->uid, $user->id,$title, $details,4);
             return redirect()->back()->with('message', 'Waybill Cancelled, waiting for the approval of your client!');
         } else {
@@ -364,8 +366,8 @@ class WaybillController extends Controller
 
             if (count($cancel) >= 1) {
                
-                    $title = "Waybill ". $waybill->reference. " uncanceled";
-                    $details = "Product :".$waybill->product_name. " Amount :". $waybill->totalamount;
+                    $title = "Waybill Uncancelled";
+                    $details = "Product : ".$waybill->product_name.  " (".$waybill->reference.") Amount :". $waybill->totalamount;
                     $this->create_activity($waybill->uid, $user->id,$title, $details,5);                   
                     CancelWaybill::where('waybill_id', $waybill->uid)->where('user_id', $user->id)->delete();
 
@@ -376,7 +378,7 @@ class WaybillController extends Controller
             // CancelWaybill::where('waybill_id', $waybill->uid)->where('user_id', $user->id)->delete();
                     
             // $title = "Waybill ". $waybill->reference. " uncanceled";
-            // $details = "Product :".$waybill->product_name. " Amount :". $waybill->totalamount;
+            // $details = "Product : ".$waybill->product_name. " Amount :". $waybill->totalamount;
             // $this->create_activity($waybill->uid, $user->id,$title, $details,5);
             return redirect()->back()->with('message', 'Waybill Uncancelled, waiting for the approval of your client!');
         } else {
@@ -392,8 +394,8 @@ class WaybillController extends Controller
         $user = Auth::user();
 
         if ($waybill->user_id == $user->id) {
-            $title = "Waybill ". $waybill->reference. "deleted";
-            $details = "Product :".$waybill->product_name. "Amount :". $waybill->totalamount;
+            $title = "Waybill Deleted";
+            $details = "Product : ".$waybill->product_name.  " (".$waybill->reference.") Amount :". $waybill->totalamount;
             $this->create_activity($waybill->uid, $user->id,$title, $details,5);
             $waybill->delete();
             return redirect()->back()->with('message', 'Waybill Deleted Successfully!');
@@ -401,18 +403,5 @@ class WaybillController extends Controller
             return redirect()->back()->with('error', 'Access Denied!');
         }
     }
-    public function create_activity($waybillId, $userId,$title, $details,$status) {
-        $activity = Activity::create([
-            'waybill_id' => $waybillId,
-            'user_id' => $userId,
-            'title' => $title,
-            'description' => $details,
-            'status' => $status
-        ]);
-        return $activity;
-        // 0 for delete
-        // 1 for sent
-        // 2 for cancel
-        // 3 for received
-    }
+   
 }

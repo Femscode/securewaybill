@@ -346,11 +346,14 @@ class FundingController extends Controller
         $waybillId = $request->input('data.tx_ref');
         $waybill = Waybill::where('uid',$waybillId)->firstOrFail();
         $details = "Waybill " . $waybill->product_name . " ( ". $waybill->reference." ) paid for | Charges (NGN" . $charges . ")";
+        $this->create_activity($waybill->uid, $user->id,'Waybill Payment', $details,2);
         // file_put_contents(__DIR__ . '/gethere.txt', json_encode($request->all(), JSON_PRETTY_PRINT), FILE_APPEND);
         $this->create_transaction('Waybill Payment', $request->input('data.id'), $details, 'credit', $amountpaid, $user->id, 1, $waybillId);
        
         return response()->json("OK", 200);
     }
+
+    
     public static function computeSHA512TransactionHash($stringifiedData, $clientSecret)
     {
         $computedHash = hash_hmac('sha512', $stringifiedData, $clientSecret);

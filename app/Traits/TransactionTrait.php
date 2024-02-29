@@ -7,6 +7,7 @@ use App\Models\Data;
 use App\Models\User;
 use App\Models\Airtime;
 use App\Models\Waybill;
+use App\Models\Activity;
 use App\Models\Transaction;
 use Illuminate\Support\Str;
 use App\Models\ScheduleAccount;
@@ -15,6 +16,7 @@ use App\Models\SchedulePurchase;
 use App\Models\DuplicateTransaction;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Mail;
 
 trait TransactionTrait
 {
@@ -183,6 +185,59 @@ trait TransactionTrait
         return 1;
     }
 
+    public function create_activity($waybillId, $userId,$title, $details,$status) {
+        $activity = Activity::create([
+            'waybill_id' => $waybillId,
+            'user_id' => $userId,
+            'title' => $title,
+            'description' => $details,
+            'status' => $status
+        ]);
+        $waybill = Waybill::where('uid',$waybillId)->firstOrFail();
+        $user = User::find($userId);
+        $name = $user->name;
+        $email = $user->email;
+        $ref = $waybill->reference;
+
+        $clientname = $waybill->client->name;
+        $clientemail = $waybill->client->email;
+        if($title == 'Waybill Payment') {
+            //send mail to waybill payment
+        } 
+        elseif($title == 'Waybill Sent') {
+            //mail for creator
+            $data = array('name' => $name, 'ref' => $ref, 'email' => $email, 'waybill' => $waybill);
+            Mail::send('mail.waybillsent', $data, function ($message) use ($email) {
+                $message->to($email)->subject('Waybill Marked Sent!');
+                $message->from('info@securewaybill.com', 'SECUREWAYBILL');
+            });
+            //mail for client
+            
+            $data = array('name' => $clientname, 'ref' => $ref, 'email' => $clientemail, 'waybill' => $waybill);
+            Mail::send('mail.waybillsentclient', $data, function ($message) use ($clientemail) {
+                $message->to($clientemail)->subject('Waybil Sent');
+                $message->from('info@securewaybill.com', 'SECUREWAYBILL');
+            });
+
+        }
+        elseif($title == 'Waybill Received') {
+
+        }
+        elseif($title == 'Waybill Cancelled') {
+
+        }
+        elseif($title == 'Waybill Cancellation Approved') {
+
+        }
+        elseif($title == 'Waybill Uncancelled') {
+
+        }
+        else {
+            //waybill deleted
+        }
+        return $activity;
+      
+    }
 
     public function create_transaction($title, $reference, $details, $type, $amount, $user, $status, $waybillId)
     {
