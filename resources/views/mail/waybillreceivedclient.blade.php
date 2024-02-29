@@ -19,12 +19,12 @@
                         style="text-align:left; margin: 0 20px; padding: 40px; background-color:#ffffff; border-radius: 6px">
                         <!--begin:Email content-->
                         <div style="padding-bottom: 30px; font-size: 17px;">
-                            <strong>Waybill ({{ $ref }}) Sent!</strong>
+                            <strong>Waybill ({{ $ref }}) Received!</strong>
                         </div>
                         <div style="padding-bottom: 30px">
                             <p>
-                                Hi, <strong>{{$name}}</strong> your waybill({{ $ref }}), has been marked sent by seller,
-                                expect to receive your goods soon!</p>
+                                Hi, <strong>{{$name}}</strong> your waybill({{ $ref }}), has been received by your client
+                                you can now withdraw funds</p>
 
 
                             <div
@@ -46,13 +46,10 @@
                         <div style="padding-bottom: 40px; text-align:center;">
                             <a href="https://securewaybill.com/{{ $ref }}" rel="noopener" target="_blank" rel="noopener"
                                 style="text-decoration:none;display:inline-block;text-align:center;padding:0.75575rem 1.3rem;font-size:0.925rem;line-height:1.5;border-radius:0.35rem;color:#ffffff;background-color:#009EF7;border:0px;margin-right:0.75rem!important;font-weight:600!important;outline:none!important;vertical-align:middle"
-                                target="_blank">More Info</a>
+                                target="_blank">Withdraw Funds</a>
                         </div>
 
                         <div style="border-bottom: 1px solid #eeeeee; margin: 15px 0"></div>
-
-
-
 
 
                         <!--end:Email content-->
@@ -70,6 +67,7 @@
                         </div>
                     </div>
                 </td>
+               
             </tbody>
         </table>
     </div>

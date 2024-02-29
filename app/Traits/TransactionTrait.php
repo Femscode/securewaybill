@@ -221,19 +221,79 @@ trait TransactionTrait
 
         }
         elseif($title == 'Waybill Received') {
+            $data = array('name' => $name, 'ref' => $ref, 'email' => $email, 'waybill' => $waybill);
+            Mail::send('mail.waybillreceived', $data, function ($message) use ($email) {
+                $message->to($email)->subject('Waybill Received!');
+                $message->from('info@securewaybill.com', 'SECUREWAYBILL');
+            });
+            //mail for client
+            
+            $data = array('name' => $clientname, 'ref' => $ref, 'email' => $clientemail, 'waybill' => $waybill);
+            Mail::send('mail.waybillreceivedclient', $data, function ($message) use ($clientemail) {
+                $message->to($clientemail)->subject('Waybil Marked Received');
+                $message->from('info@securewaybill.com', 'SECUREWAYBILL');
+            });
 
         }
         elseif($title == 'Waybill Cancelled') {
+            $data = array('name' => $name, 'ref' => $ref, 'email' => $email, 'waybill' => $waybill);
+            Mail::send('mail.waybillcancelled', $data, function ($message) use ($email) {
+                $message->to($email)->subject('Waybill Cancelled!');
+                $message->from('info@securewaybill.com', 'SECUREWAYBILL');
+            });
+            //mail for client
+            
+            $data = array('name' => $clientname, 'ref' => $ref, 'email' => $clientemail, 'waybill' => $waybill);
+            Mail::send('mail.waybillcancelledclient', $data, function ($message) use ($clientemail) {
+                $message->to($clientemail)->subject('Waybil Cancelled');
+                $message->from('info@securewaybill.com', 'SECUREWAYBILL');
+            });
 
         }
         elseif($title == 'Waybill Cancellation Approved') {
+            $data = array('name' => $name, 'ref' => $ref, 'email' => $email, 'waybill' => $waybill);
+            Mail::send('mail.waybillcancelledapproved', $data, function ($message) use ($email) {
+                $message->to($email)->subject('Waybill Cancellation Approved!');
+                $message->from('info@securewaybill.com', 'SECUREWAYBILL');
+            });
+            //mail for client
+            
+            $data = array('name' => $clientname, 'ref' => $ref, 'email' => $clientemail, 'waybill' => $waybill);
+            Mail::send('mail.waybillcancelledapprovedclient', $data, function ($message) use ($clientemail) {
+                $message->to($clientemail)->subject('Waybil Cancellation Approved');
+                $message->from('info@securewaybill.com', 'SECUREWAYBILL');
+            });
 
         }
         elseif($title == 'Waybill Uncancelled') {
+            $data = array('name' => $name, 'ref' => $ref, 'email' => $email, 'waybill' => $waybill);
+            Mail::send('mail.waybilluncancelled', $data, function ($message) use ($email) {
+                $message->to($email)->subject('Waybill Uncancelled!');
+                $message->from('info@securewaybill.com', 'SECUREWAYBILL');
+            });
+            //mail for client
+            
+            $data = array('name' => $clientname, 'ref' => $ref, 'email' => $clientemail, 'waybill' => $waybill);
+            Mail::send('mail.waybilluncancelled', $data, function ($message) use ($clientemail) {
+                $message->to($clientemail)->subject('Waybil Uncancelled');
+                $message->from('info@securewaybill.com', 'SECUREWAYBILL');
+            });
 
         }
         else {
             //waybill deleted
+            $data = array('name' => $name, 'ref' => $ref, 'email' => $email, 'waybill' => $waybill);
+            Mail::send('mail.waybilldeleted', $data, function ($message) use ($email) {
+                $message->to($email)->subject('Waybill Deleted!');
+                $message->from('info@securewaybill.com', 'SECUREWAYBILL');
+            });
+            //mail for client
+            
+            $data = array('name' => $clientname, 'ref' => $ref, 'email' => $clientemail, 'waybill' => $waybill);
+            Mail::send('mail.waybilldeleted', $data, function ($message) use ($clientemail) {
+                $message->to($clientemail)->subject('Waybil Deleted');
+                $message->from('info@securewaybill.com', 'SECUREWAYBILL');
+            });
         }
         return $activity;
       

@@ -148,14 +148,14 @@ class WaybillController extends Controller
             // dd($responseData, 'here');
             $data['bank_name'] = $responseData['data']['bank_name'];
             $data['account_no'] = $responseData['data']['account_number'];
-            $data['amount'] = $responseData['data']['amount'];
+            $data['amount'] = ceil($responseData['data']['amount']);
             $data['expiry_date'] = $responseData['data']['expiry_date'];
             return view('dashboard.direct_transfer', $data);
         }
     }
     public function paywaybill(Request $request)
     {
-       
+
         $user = Auth::user();
         $client =  User::where('username', $request->client_id)->first();
         if ($client === null) {
@@ -208,7 +208,7 @@ class WaybillController extends Controller
             // dd($responseData, 'here');
             $data['bank_name'] = $responseData['data']['bank_name'];
             $data['account_no'] = $responseData['data']['account_number'];
-            $data['amount'] = $responseData['data']['amount'];
+            $data['amount'] = ceil($responseData['data']['amount']);
             $data['expiry_date'] = $responseData['data']['expiry_date'];
             return view('dashboard.direct_transfer', $data);
         }
@@ -254,12 +254,16 @@ class WaybillController extends Controller
             return redirect()->back()->with('error', 'Waybill not found!');
         }
         $user = Auth::user();
-        $waybill->status = 2;
-        $waybill->save();
-        $title = "Waybill Sent";
-        $details = "Product : ".$waybill->product_name. " (".$waybill->reference.") Amount :". $waybill->totalamount;
-        $this->create_activity($waybill->uid, $user->id,$title, $details,2);
-        return redirect()->back()->with('message', 'Waybill has been marked sent to your client. Once your client approve the receipient of waybill, you can then withdraw your funds!');
+        if ($user->id == $waybill->user_id || $user->id == $waybill->client_id) {
+            $waybill->status = 2;
+            $waybill->save();
+            $title = "Waybill Sent";
+            $details = "Product : " . $waybill->product_name . " (" . $waybill->reference . ") Amount :" . $waybill->totalamount;
+            $this->create_activity($waybill->uid, $user->id, $title, $details, 2);
+            return redirect()->back()->with('message', 'Waybill has been marked sent to your client. Once your client approve the receipient of waybill, you can then withdraw your funds!');
+        } else {
+            return redirect()->route('/dashboard')->with('error', 'Access Denied!');
+        }
     }
     public function withdraw($id)
     {
@@ -303,12 +307,17 @@ class WaybillController extends Controller
             return redirect()->back()->with('error', 'Waybill not found!');
         }
         $user = Auth::user();
+        if ($user->id == $waybill->user_id || $user->id == $waybill->client_id) {
+        
         $waybill->status = 3;
         $waybill->save();
         $title = "Waybill Received";
-        $details = "Product : ".$waybill->product_name." (".$waybill->reference.") Amount :". $waybill->totalamount;
-        $this->create_activity($waybill->uid, $user->id,$title, $details,3);
+        $details = "Product : " . $waybill->product_name . " (" . $waybill->reference . ") Amount :" . $waybill->totalamount;
+        $this->create_activity($waybill->uid, $user->id, $title, $details, 3);
         return redirect()->back()->with('message', 'Waybill has been marked received. Your client can now withdraw funds!');
+    } else {
+        return redirect()->route('/dashboard')->with('error', 'Access Denied!');
+    }
     }
 
 
@@ -331,9 +340,9 @@ class WaybillController extends Controller
                     return redirect()->back()->with('message', 'Waybill Cancelled, waiting for the approval of your client!');
                 } else {
                     $title = "Waybill Cancellation Approved";
-                    $details = "Product : ".$waybill->product_name.  " (".$waybill->reference.") Amount :". $waybill->totalamount;
-                    $this->create_activity($waybill->uid, $user->id,$title, $details,4);
-                   
+                    $details = "Product : " . $waybill->product_name .  " (" . $waybill->reference . ") Amount :" . $waybill->totalamount;
+                    $this->create_activity($waybill->uid, $user->id, $title, $details, 4);
+
                     CancelWaybill::create(['waybill_id' => $waybill->uid, 'user_id' => $user->id]);
                     return redirect()->back()->with('message', 'Waybill Cancelled, waybill creator can now withdraw funds!');
                 }
@@ -341,8 +350,8 @@ class WaybillController extends Controller
 
             CancelWaybill::create(['waybill_id' => $waybill->uid, 'user_id' => $user->id]);
             $title = "Waybill Canceled";
-            $details = "Product : ".$waybill->product_name.  " (".$waybill->reference.") Amount :". $waybill->totalamount;
-            $this->create_activity($waybill->uid, $user->id,$title, $details,4);
+            $details = "Product : " . $waybill->product_name .  " (" . $waybill->reference . ") Amount :" . $waybill->totalamount;
+            $this->create_activity($waybill->uid, $user->id, $title, $details, 4);
             return redirect()->back()->with('message', 'Waybill Cancelled, waiting for the approval of your client!');
         } else {
             // Corrected redirect route
@@ -365,18 +374,17 @@ class WaybillController extends Controller
             $cancel = CancelWaybill::where('user_id', $user->id)->where('waybill_id', $waybill->uid)->get();
 
             if (count($cancel) >= 1) {
-               
-                    $title = "Waybill Uncancelled";
-                    $details = "Product : ".$waybill->product_name.  " (".$waybill->reference.") Amount :". $waybill->totalamount;
-                    $this->create_activity($waybill->uid, $user->id,$title, $details,5);                   
-                    CancelWaybill::where('waybill_id', $waybill->uid)->where('user_id', $user->id)->delete();
 
-                    return redirect()->back()->with('message', 'Waybill uncancelled.');
-                
+                $title = "Waybill Uncancelled";
+                $details = "Product : " . $waybill->product_name .  " (" . $waybill->reference . ") Amount :" . $waybill->totalamount;
+                $this->create_activity($waybill->uid, $user->id, $title, $details, 5);
+                CancelWaybill::where('waybill_id', $waybill->uid)->where('user_id', $user->id)->delete();
+
+                return redirect()->back()->with('message', 'Waybill uncancelled.');
             }
 
             // CancelWaybill::where('waybill_id', $waybill->uid)->where('user_id', $user->id)->delete();
-                    
+
             // $title = "Waybill ". $waybill->reference. " uncanceled";
             // $details = "Product : ".$waybill->product_name. " Amount :". $waybill->totalamount;
             // $this->create_activity($waybill->uid, $user->id,$title, $details,5);
@@ -395,13 +403,12 @@ class WaybillController extends Controller
 
         if ($waybill->user_id == $user->id) {
             $title = "Waybill Deleted";
-            $details = "Product : ".$waybill->product_name.  " (".$waybill->reference.") Amount :". $waybill->totalamount;
-            $this->create_activity($waybill->uid, $user->id,$title, $details,5);
+            $details = "Product : " . $waybill->product_name .  " (" . $waybill->reference . ") Amount :" . $waybill->totalamount;
+            $this->create_activity($waybill->uid, $user->id, $title, $details, 5);
             $waybill->delete();
             return redirect()->back()->with('message', 'Waybill Deleted Successfully!');
         } else {
             return redirect()->back()->with('error', 'Access Denied!');
         }
     }
-   
 }
