@@ -5,7 +5,6 @@
 @endsection
 
 @section('content')
-<div class="content container-fluid" style="margin-top: -17rem;">
 
     <div class="row">
         <!--begin::Profile Account Information-->
@@ -43,6 +42,7 @@
                     <input id='phone' value='{{ $user->phone }}' type='hidden' />
                     <input id='name' value='{{ $user->name }}' type='hidden' />
                     <input id='email' value='{{ $user->email }}' type='hidden' />
+                    <input id='waybill_id' value='{{ $waybill->uid }}' type='hidden' />
                     <input id='amount' value='{{ $amount }}' type='hidden' />
                     <input id='redirect_url' value='{{ $callback_url }}' type='hidden' />
                     <input id='public_key' value='{{ $public_key }}' type='hidden' />
@@ -72,7 +72,6 @@
         <!--end::Profile Account Information-->
     </div>
 
-</div>
 
 @endsection
 
@@ -88,14 +87,14 @@
            console.log(phone, email, amount, public_key, redirect_url)
   FlutterwaveCheckout({
     public_key: public_key,
-    tx_ref: "titanic-48981487343MDI0NzJD",
+    tx_ref:  $("#waybill_id").val(),
     amount: amount,
     currency: "NGN",
     payment_options: "card, mobilemoneyghana, ussd",
     redirect_url: redirect_url,
     meta: {
-      consumer_id: 13,
-      consumer_mac: "92a3-983jd-1192a",
+     
+      waybill_id : $("#waybill_id").val()
     },
     customer: {
       email: email,
@@ -103,7 +102,7 @@
       name: name,
     },
     customizations: {
-      title: "VTUBIZ Checkout",
+      title: "SECUREWAYBILL Checkout",
       description: "Fast and Easy Payment",
       logo: "https://vtubiz.com/assets/img/logo/vtulogo.png",
     },

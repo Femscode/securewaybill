@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use App\Models\Data;
 use App\Models\User;
 use App\Models\Airtime;
+use App\Models\Waybill;
 use App\Models\Transaction;
 use Illuminate\Support\Str;
 use App\Models\ScheduleAccount;
@@ -187,7 +188,7 @@ trait TransactionTrait
     {
         //    dd($title, $details, $type, intval($amount),intval($user),$name);
         $r_user = User::find($user);
-      
+
 
         $tranx =  Transaction::create([
             'user_id' => $user,
@@ -195,16 +196,15 @@ trait TransactionTrait
             'waybill_id' => $waybillId,
             'title' => $title,
             'reference' => $reference,
-            'description' => $details,          
+            'description' => $details,
             'type' => $type,
             'amount' => $amount,
             'status' => $status
         ]);
         if ($title == 'Fund Transfer') {
-          
+
             $tranx->status = 1;
             $tranx->save();
-        
         } elseif ($title == 'Payment Received') {
 
             $r_user->balance += $amount;
@@ -214,15 +214,11 @@ trait TransactionTrait
 
             $tranx->status = 1;
             $tranx->save();
-        } elseif ($title == 'Account Funding') {
+        } elseif ($title == 'Waybill Payment') {
+            $waybill = Waybill::where('uid', $waybillId)->first();
+            $waybill->status = 1;
+            $waybill->save();
 
-
-            $r_user->balance += $amount;
-
-            $r_user->save();
-            $tranx->after = $r_user->balance;
-            $tranx->status = 1;
-            $tranx->save();
             return $tranx->id;
         } elseif ($title == 'Bonus Credited') {
 
@@ -258,14 +254,14 @@ trait TransactionTrait
 
 
             if ($status == 1) {
-               
-               
+
+
                 $tranx->status = $status;
                 $tranx->save();
                 return $tranx;
             } else {
 
-              
+
                 $tranx->status = $status;
                 $tranx->save();
                 return $tranx;
@@ -618,8 +614,8 @@ trait TransactionTrait
         // dd($request->all());
         $tenMinutesAgo = Carbon::now()->subMinutes(10);
         $recipients = GiveawaySchedule::where('status', 0)
-        ->where('created_at', '>=', $tenMinutesAgo)
-        ->get();
+            ->where('created_at', '>=', $tenMinutesAgo)
+            ->get();
         // dd($recipients);
         $purchase_status = [];
         foreach ($recipients as $reci) {
@@ -629,7 +625,7 @@ trait TransactionTrait
                 //     $reci->status = 1;
                 //     $reci->save();
                 // }
-               
+
             } elseif ($reci->type == 'airtime') {
                 $response = $this->handle_buy_airtime($reci->phone, $reci->network, $reci->amount, $reci->amount, $reci->giveaway_id, $reci->participant_id);
                 // if($response['success'] === "true") {
@@ -637,7 +633,7 @@ trait TransactionTrait
                 //     $reci->save();
                 // }
             } else {
-                
+
                 return true;
             }
             // dd($reci, $response);
@@ -659,7 +655,7 @@ trait TransactionTrait
 
             array_push($purchase_status, $response);
         }
-       
+
         $response = [
             'success' => true,
             'message' => 'Purchase Successful! Check group transaction table to confirm. ',
@@ -704,8 +700,8 @@ trait TransactionTrait
         $details = $network_mi . " Data Purchase of " . $data->plan_name . " on " . $phone;
         $client_reference =  'sgw_buy_data_' . Str::random(5);
 
-        $recipient = GiveawaySchedule::where('participant_id',$part_id)->first();
-        if($recipient !== null) {
+        $recipient = GiveawaySchedule::where('participant_id', $part_id)->first();
+        if ($recipient !== null) {
             $recipient->reference = $client_reference;
             $recipient->save();
         }
@@ -716,7 +712,7 @@ trait TransactionTrait
         $transaction = Transaction::find($trans_id);
         $transaction->group_id = $group_id;
         $transaction->save();
-      
+
         $curl = curl_init();
         curl_setopt_array($curl, array(
             CURLOPT_URL => "https://easyaccessapi.com.ng/api/data.php",
@@ -744,7 +740,7 @@ trait TransactionTrait
         return $response_json;
     }
 
-    public function handle_buy_airtime($phone, $network, $amount, $discounted_amount, $group_id = null,$part_id = null)
+    public function handle_buy_airtime($phone, $network, $amount, $discounted_amount, $group_id = null, $part_id = null)
     {
         $phone_number = $phone;
         if (strlen($phone) == 10) {
@@ -756,18 +752,18 @@ trait TransactionTrait
         $real_airtimeprice = $amount - ($actual_price / 100) * $amount;
         // dd($real_airtimeprice, $actual_price);
 
-       
+
 
         //check duplicate
 
         $details =  "Airtime Purchase of " . $amount . " on " . $phone;
         $client_reference =  'sgw_buy_airtime_' . Str::random(7);
-        $recipient = GiveawaySchedule::where('participant_id',$part_id)->first();
-        if($recipient !== null) {
+        $recipient = GiveawaySchedule::where('participant_id', $part_id)->first();
+        if ($recipient !== null) {
             $recipient->reference = $client_reference;
             $recipient->save();
         }
-       
+
         //purchase the airtime
         $trans_id = $this->create_transaction('Airtime Purchase', $client_reference, $details, 'debit', $discounted_amount, 5, 2, $real_airtimeprice, $phone, $network, $amount);
         $transaction = Transaction::find($trans_id);

@@ -10,6 +10,7 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
+  <meta name="csrf-token" content="{{ csrf_token() }}">
   <link href="assets/img/favicon.png" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
@@ -39,7 +40,7 @@
 
     <div class="d-flex align-items-center justify-content-between">
       <a href="index.html" class="logo d-flex align-items-center">
-        <img src="assets/img/logo.png" alt="">
+        {{-- <img src="assets/img/logo.png" alt=""> --}}
         <span class="d-none d-lg-block">SWB</span>
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
@@ -277,7 +278,7 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link " href="index.html">
+        <a class="nav-link " href="/dashboard">
           <i class="bi bi-grid"></i>
           <span>Dashboard</span>
         </a>
@@ -310,7 +311,7 @@
               </a>
             </li>
             <li>
-              <a href="/my-waybill">
+              <a href="/my-waybills">
                 <i class="bi bi-circle"></i><span>View Waybill</span>
               </a>
             </li>
@@ -482,7 +483,7 @@
   <script src="{{ asset('securedashboard/js/main.js')}}"></script>
 
   {{-- //from the old dashboard  --}}
-  
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
   <script>

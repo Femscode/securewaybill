@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Paystack;
 use Carbon\Carbon;
 use App\Models\User;
+use App\Models\Waybill;
 use App\Models\Transaction;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -342,16 +343,12 @@ class FundingController extends Controller
         $details_paid = $amountpaid + $charges;
 
         $user = User::where('email', $email)->firstOrFail();
-        $details = "Account credited with NGN" . $details_paid . " | Charges (NGN" . $charges . ")";
+        $waybillId = $request->input('data.tx_ref');
+        $waybill = Waybill::where('uid',$waybillId)->firstOrFail();
+        $details = "Waybill " . $waybill->product_name . " ( ". $waybill->reference." ) paid for | Charges (NGN" . $charges . ")";
         // file_put_contents(__DIR__ . '/gethere.txt', json_encode($request->all(), JSON_PRETTY_PRINT), FILE_APPEND);
-        $this->create_transaction('Account Funding', $request->input('data.id'), $details, 'credit', $amountpaid, $user->id, 1);
-        if ($user->first_time == 0) {
-            $bonus = intval(0.02 * $amountpaid);
-            $details = "You've received a welcome bonus of NGN" . $bonus;
-            $this->create_transaction('Bonus Credited', $request->input('data.id'), $details, 'credit',  $bonus, $user->id, 1);
-            $user->first_time = 1;
-            $user->save();
-        }
+        $this->create_transaction('Waybill Payment', $request->input('data.id'), $details, 'credit', $amountpaid, $user->id, 1, $waybillId);
+       
         return response()->json("OK", 200);
     }
     public static function computeSHA512TransactionHash($stringifiedData, $clientSecret)
