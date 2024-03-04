@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-bs-theme="light">
+<html lang="en" data-bs-theme="dark">
 
 <!-- Mirrored from SWB.createx.studio/landing-digital-agency.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 16 Feb 2024 14:59:31 GMT -->
 <!-- Added by HTTrack -->
@@ -10,9 +10,9 @@
   <title>SECUREWAYBILL | HOME</title>
 
   <!-- SEO Meta Tags -->
-  <meta name="description" content="SWB - Multipurpose Technology Bootstrap Template">
+  <meta name="description" content="SWB - Secure Your Online Transaction">
   <meta name="keywords"
-    content="bootstrap, business, creative agency, mobile app showcase, saas, fintech, finance, online courses, software, medical, conference landing, services, e-commerce, shopping cart, multipurpose, shop, ui kit, marketing, seo, landing, blog, portfolio, html5, css3, javascript, gallery, slider, touch, creative">
+    content="Secure your online transactions">
   <meta name="author" content="Createx Studio">
 
   <!-- Viewport -->
@@ -264,7 +264,7 @@
               </h1>
               <div class="d-md-flex align-items-md-start">
                 <a href="/register"
-                  class="btn btn-lg btn-primary flex-shrink-0 me-md-4 mb-md-0 mb-sm-4 mb-3">Create an account</a>
+                  class="btn btn-lg btn-primary flex-shrink-0 me-md-4 mb-md-0 mb-sm-4 mb-3">Create a waybill</a>
                 <p class="d-lg-block d-none mb-0 ps-md-3">Securewaybill is a leading full-service digital platform, that
                   help you secure an online transaction, either as a seller or a buyer.</p>
               </div>
