@@ -53,11 +53,11 @@
                     <br>
                     <div class="d-flex">
 
-                      <input id="copy_content_" type="text" class="form-control form-control-solid me-3 flex-grow-1"
+                      <input disabled id="copyContent" type="text" class="form-control form-control-solid me-3 flex-grow-1"
                         name="search" value="https://securewaybill.com/{{ $waybill->reference }}">
 
-                      <a class="btn btn-light btn-soft-primary fw-bold flex-shrink-0 copy-btn"
-                        data-clipboard-target="#copy_content_"><i class='bi-clipboard'></i></a>
+                      <a id='copyBtn' class="btn btn-light btn-soft-primary fw-bold flex-shrink-0 copy-btn"
+                       ><i class='bi-clipboard'></i></a>
                     </div>
 
                     @if($waybill->status == 0)
@@ -254,7 +254,26 @@
 
   @section('script')
   <script>
-    $(document).ready(function() {
-     })
+    $('#copyBtn').click(function() {
+      // Select the input field content
+      var inputField = $('#copyContent');
+      inputField.select();
+      
+
+      // Copy the selected content to clipboard
+      document.execCommand('copy');
+
+      // Deselect the input field
+      inputField.blur();
+
+      // You can add a visual feedback if needed, for example, change the icon color or show a tooltip
+     
+      $("#copyBtn").text('Copied')
+
+      // Optionally, revert the icon color after a short delay
+      setTimeout(function() {
+        $('#refCode').html('<i class="bi-clipboard"></i>'); // Revert to the original color (empty string removes inline style)
+      }, 1000); // Adjust the delay as needed
+    });
   </script>
   @endsection

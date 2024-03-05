@@ -65,7 +65,7 @@
                             </div>
                             <div class="d-flex">
 
-                                <input id="copy_content_{{ $loop->iteration }}" type="text"
+                                <input disabled id="copy_content_{{ $loop->iteration }}" type="text"
                                     class="form-control form-control-solid me-3 flex-grow-1" name="search"
                                     value="https://securewaybill.com/{{ $waybill->reference }}">
 
@@ -245,6 +245,7 @@
 @section('script')
 <script src="/newdashboard/node_modules/clipboard/dist/clipboard.min.js"></script>
 <script src="/newdashboard/js/hs.clipboard.js"></script>
+
 <script>
     (function() {
       // INITIALIZATION OF CLIPBOARD
@@ -280,5 +281,50 @@
             console.error('Trigger:', e.trigger);
         });
   })
+</script>
+
+
+<script>
+    // Initialize Clipboard.js
+    var clipboard = new ClipboardJS('.copy-btn');
+
+    clipboard.on('success', function (e) {
+        // Change the button text to "Copied"
+        $(e.trigger).html('<i class="bi-check"></i> Copied');
+
+        // Show "Copied" message
+        var copyStatus = $(e.trigger).siblings('.copy-status');
+        copyStatus.fadeIn().delay(1000).fadeOut();
+
+        // Reset the button text after a short delay
+        setTimeout(function () {
+            $(e.trigger).html('<i class="bi-clipboard"></i>');
+        }, 1500);
+
+        // Reset the input field selection
+        e.clearSelection();
+    });
+
+    clipboard.on('error', function (e) {
+        console.error('Unable to copy to clipboard.', e);
+    });
+
+    // Custom function to handle copying
+    function copyToClipboard(btn) {
+        var inputFieldId = $(btn).data('clipboard-target');
+        var inputField = $('#' + inputFieldId);
+
+        // Manually select the input field content
+        inputField.select();
+
+        try {
+            document.execCommand('copy');
+        } catch (err) {
+            console.error('Unable to copy to clipboard.', err);
+        }
+
+        // Deselect the input field
+        inputField.blur();
+    }
 </script>
 @endsection

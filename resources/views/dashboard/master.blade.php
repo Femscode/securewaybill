@@ -434,15 +434,9 @@
           Your Securewaybill ID:
         </span>
         <div class="input-group input-group-merge">
-          <input type="text" id="iconExample" class="form-control" value="{{ $user->username }}">
+          <input id='refContent' disabled type="text" id="iconExample" class="form-control" value="{{ $user->username }}">
 
-          <a class="js-clipboard input-group-append input-group-text" href="javascript:;"
-            data-hs-clipboard-options='{
-                               "contentTarget": "#iconExample",
-                               "classChangeTarget": "#iconExampleLinkIcon",
-                               "defaultClass": "bi-clipboard",
-                               "successClass": "bi-check"
-                             }'>
+          <a id='refCode' class="js-clipboard input-group-append input-group-text" href="javascript:;">
             <i id="iconExampleLinkIcon" class="bi-clipboard"></i>
           </a>
         </div>
@@ -485,6 +479,8 @@
   {{-- //from the old dashboard  --}}
   <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<!-- Include Clipboard.js library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.10/clipboard.min.js"></script>
 
   <script>
     @if(isset($notification))
@@ -519,6 +515,28 @@ Swal.fire(
                         }) 
            
         @endif
+        $('#refCode').click(function() {
+      // Select the input field content
+      var inputField = $('#refContent');
+      inputField.select();
+      
+
+      // Copy the selected content to clipboard
+      document.execCommand('copy');
+
+      // Deselect the input field
+      inputField.blur();
+
+      // You can add a visual feedback if needed, for example, change the icon color or show a tooltip
+     
+      $("#refCode").text('Copied')
+
+      // Optionally, revert the icon color after a short delay
+      setTimeout(function() {
+        $('#refCode').html('<i class="bi-clipboard"></i>'); // Revert to the original color (empty string removes inline style)
+      }, 1000); // Adjust the delay as needed
+    });
+ 
  
   </script>
 
