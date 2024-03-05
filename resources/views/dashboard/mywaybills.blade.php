@@ -65,7 +65,7 @@
                             </div>
                             <div class="d-flex">
 
-                                <input disabled id="copy_content_{{ $loop->iteration }}" type="text"
+                                <input readonly id="copy_content_{{ $loop->iteration }}" type="text"
                                     class="form-control form-control-solid me-3 flex-grow-1" name="search"
                                     value="https://securewaybill.com/{{ $waybill->reference }}">
 
