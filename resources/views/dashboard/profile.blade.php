@@ -29,11 +29,7 @@
                         <label class="col-xl-3 col-lg-3 col-form-label">Name</label>
                         <div class="col-lg-9 col-xl-6">
                             <div class="input-group input-group-lg input-group-solid">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text bg-soft-primary">
-                                        <i class="bi-person-badge"></i>
-                                    </span>
-                                </div>
+                               
                                 <div class="">
                                     <input name='name' class="form-control form-control-lg form-control-solid"
                                         type="text" value="{{ $user->name }}" />
@@ -46,11 +42,7 @@
                         <label class="col-xl-3 col-lg-3 col-form-label">Email Address</label>
                         <div class="col-lg-9 col-xl-6">
                             <div class="input-group input-group-lg input-group-solid">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text bg-soft-primary">
-                                        <i class="bi-mailbox"></i>
-                                    </span>
-                                </div>
+                               
                                 <input readonly disabled type="text"
                                     class="form-control form-control-lg form-control-solid" value="{{ $user->email }}"
                                     placeholder="Email" />
@@ -61,11 +53,7 @@
                         <label class="col-xl-3 col-lg-3 col-form-label">Phone</label>
                         <div class="col-lg-9 col-xl-6">
                             <div class="input-group input-group-lg input-group-solid">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text bg-soft-primary">
-                                        <i class="bi-phone"></i>
-                                    </span>
-                                </div>
+                               
                                 <input type="text" name='phone' class="form-control form-control-lg form-control-solid"
                                     value="{{ $user->phone ?? "" }}" placeholder="Phone Number" />
                             </div>
@@ -84,11 +72,7 @@
                         <label class="col-xl-3 col-lg-3 col-form-label">BVN</label>
                         <div class="col-lg-9 col-xl-6">
                             <div class="input-group input-group-lg input-group-solid">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text bg-soft-primary">
-                                        <i class="bi-bank"></i>
-                                    </span>
-                                </div>
+                               
                                 <input disabled type="number" name='bvn' readonly
                                     class="form-control form-control-lg form-control-solid"
                                     value="{{ $user->bvn ?? "" }}" placeholder="Bank Verification Number" />

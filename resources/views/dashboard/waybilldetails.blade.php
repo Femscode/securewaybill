@@ -37,8 +37,8 @@
 
             <tr>
               <td>
-                <div style='border-left:3px solid #004085'
-                  class="position-relative ps-2 pe-3 py-2  bg-soft-primary rounded">
+                <div style='border-left:5px solid #004085;background-color:#cce5ff;color:#004085'
+                  class="position-relative p-4  bg-soft-primary rounded">
                   <div class="position-absolute start-0 top-0 w-4px h-100 rounded-2 bg-primary">
                   </div>
                   <a href="#" style='color:#004085' class="mb-1 h4 text-hover-primary alert-heading">

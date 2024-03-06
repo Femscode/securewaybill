@@ -265,8 +265,9 @@
               <div class="d-md-flex align-items-md-start">
                 <a href="/register"
                   class="btn btn-lg btn-primary flex-shrink-0 me-md-4 mb-md-0 mb-sm-4 mb-3">Create a waybill</a>
-                <p class="d-lg-block d-none mb-0 ps-md-3">Securewaybill is a leading full-service digital platform, that
-                  help you secure an online transaction, either as a seller or a buyer.</p>
+                {{-- <p class="d-lg-block d-none mb-0 ps-md-3">Securewaybill is a leading full-service digital platform, that
+                  help you secure an online transaction, either as a seller or a buyer.</p> --}}
+                <p class="d-lg-block d-none mb-0 ps-md-3">An assurance platform for buyers and sellers: Sellers receive guaranteed full payment, and buyers can verify goods before approval.</p>
               </div>
             </div>
 

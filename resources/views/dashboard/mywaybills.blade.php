@@ -40,8 +40,8 @@
 
                 <tr>
                     <td>
-                        <div style='border-top:3px solid #004085'
-                            class="position-relative p-4  bg-soft-primary rounded">
+                        <div style='border-top:0px solid #004085;background-color:#cce5ff;border-color:#b8daff;color:#004085'
+                            class="position-relative p-4  bg-light-primary rounded">
                             <div class="position-absolute start-0 top-0 w-4px h-100 rounded-2 bg-primary">
                             </div>
                             <a href="#" style='color:#004085' class="mb-1 h2 text-hover-primary alert-heading">
@@ -55,14 +55,14 @@
                                 @endif
                             </h4>
                             
-                            <h5>Client trust level</h5>
+                            {{-- <h5>Client trust level</h5>
                             <div class='col-md-6'>
                                 <div class="progress">
                                     <div class="progress-bar progress-bar-striped bg-danger" role="progressbar"
                                         style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                             <div class="d-flex">
 
                                 <input readonly id="copy_content_{{ $loop->iteration }}" type="text"

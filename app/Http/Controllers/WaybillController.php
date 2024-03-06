@@ -105,7 +105,7 @@ class WaybillController extends Controller
         $data['amount'] = $amount = $waybill->totalamount;
         $data['active'] = 'fundwallet';
         $data['waybill'] = $waybill;
-        if ($waybill->payment_method == 'Card') {
+        if ($waybill->paymentmode == 'Card') {
             $env = env('FLW_PUBLIC_KEY');
 
             $data['public_key'] = $env;
@@ -155,7 +155,8 @@ class WaybillController extends Controller
     }
     public function paywaybill(Request $request)
     {
-
+       
+        // dd($request->all());
         $user = Auth::user();
         $client =  User::where('username', $request->client_id)->first();
         if ($client === null) {
@@ -165,7 +166,7 @@ class WaybillController extends Controller
         $data['user'] = $user = Auth::user();
         $data['amount'] = $amount = $waybill->totalamount;
         $data['active'] = 'fundwallet';
-        if ($waybill->payment_method == 'Card') {
+        if ($waybill->paymentmode == 'Card') {
             $env = env('FLW_PUBLIC_KEY');
 
             $data['public_key'] = $env;
@@ -181,10 +182,10 @@ class WaybillController extends Controller
             // return view('dashboard.direct_transfer',$data);  
             // $env = User::where('email', 'fasanyafemi@gmail.com')->first()->remember_token;
             $trx_ref = $waybill->uid;
+            // dd(env('FLW_SECRET_KEY'));
 
             $response = Http::withHeaders([
                 'Content-Type' => 'application/json',
-                // 'Authorization' => 'Bearer ' . $env, // Replace with your actual secret key
                 'Authorization' => 'Bearer ' . env('FLW_SECRET_KEY'), // Replace with your actual secret key
             ])
                 ->post('https://api.flutterwave.com/v3/virtual-account-numbers/', [
@@ -199,17 +200,16 @@ class WaybillController extends Controller
                     'narration' => 'Securewaybill/' . $first_name . '-' . $last_name,
                 ]);
 
-            // You can then access the response body and status code like this:
             $responseBody = $response->body(); // Get the response body as a string
             $responseStatusCode = $response->status(); // Get the HTTP status code
 
-            // You can also convert the JSON response to an array or object if needed:
             $responseData = $response->json(); // Converts JSON response to an array
             // dd($responseData, 'here');
             $data['bank_name'] = $responseData['data']['bank_name'];
             $data['account_no'] = $responseData['data']['account_number'];
             $data['amount'] = ceil($responseData['data']['amount']);
             $data['expiry_date'] = $responseData['data']['expiry_date'];
+          
             return view('dashboard.direct_transfer', $data);
         }
     }

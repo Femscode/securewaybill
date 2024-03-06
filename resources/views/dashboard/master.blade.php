@@ -81,8 +81,8 @@
             <li class="notification-item">
               <i class="bi bi-exclamation-circle text-warning"></i>
               <div>
-                <h4>Lorem Ipsum</h4>
-                <p>Quae dolorem earum veritatis oditseno</p>
+                <h4>Welcome to Securewaybill</h4>
+                <p>Create a waybill to protect your transactions</p>
                 <p>30 min. ago</p>
               </div>
             </li>
@@ -90,45 +90,10 @@
             <li>
               <hr class="dropdown-divider">
             </li>
+]
 
-            <li class="notification-item">
-              <i class="bi bi-x-circle text-danger"></i>
-              <div>
-                <h4>Atque rerum nesciunt</h4>
-                <p>Quae dolorem earum veritatis oditseno</p>
-                <p>1 hr. ago</p>
-              </div>
-            </li>
-
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-
-            <li class="notification-item">
-              <i class="bi bi-check-circle text-success"></i>
-              <div>
-                <h4>Sit rerum fuga</h4>
-                <p>Quae dolorem earum veritatis oditseno</p>
-                <p>2 hrs. ago</p>
-              </div>
-            </li>
-
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-
-            <li class="notification-item">
-              <i class="bi bi-info-circle text-primary"></i>
-              <div>
-                <h4>Dicta reprehenderit</h4>
-                <p>Quae dolorem earum veritatis oditseno</p>
-                <p>4 hrs. ago</p>
-              </div>
-            </li>
-
-            <li>
-              <hr class="dropdown-divider">
-            </li>
+         
+           
             <li class="dropdown-footer">
               <a href="#">Show all notifications</a>
             </li>
@@ -157,37 +122,9 @@
               <a href="#">
                 <img src="assets/img/messages-1.jpg" alt="" class="rounded-circle">
                 <div>
-                  <h4>Maria Hudson</h4>
-                  <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
+                  <h4>Update your profile</h4>
+                  <p>Finish your registration by updating your profile</p>
                   <p>4 hrs. ago</p>
-                </div>
-              </a>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-
-            <li class="message-item">
-              <a href="#">
-                <img src="assets/img/messages-2.jpg" alt="" class="rounded-circle">
-                <div>
-                  <h4>Anna Nelson</h4>
-                  <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
-                  <p>6 hrs. ago</p>
-                </div>
-              </a>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-
-            <li class="message-item">
-              <a href="#">
-                <img src="assets/img/messages-3.jpg" alt="" class="rounded-circle">
-                <div>
-                  <h4>David Muldon</h4>
-                  <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
-                  <p>8 hrs. ago</p>
                 </div>
               </a>
             </li>
@@ -315,11 +252,7 @@
                 <i class="bi bi-circle"></i><span>View Waybill</span>
               </a>
             </li>
-            <li>
-              <a href="components-badges.html">
-                <i class="bi bi-circle"></i><span>Badges</span>
-              </a>
-            </li>
+           
           
           </ul>
         </li>
@@ -434,7 +367,7 @@
           Your Securewaybill ID:
         </span>
         <div class="input-group input-group-merge">
-          <input id='refContent' disabled type="text" id="iconExample" class="form-control" value="{{ $user->username }}">
+          <input id='refContent' readonly type="text" id="iconExample" class="form-control" value="{{ $user->username }}">
 
           <a id='refCode' class="js-clipboard input-group-append input-group-text" href="javascript:;">
             <i id="iconExampleLinkIcon" class="bi-clipboard"></i>
