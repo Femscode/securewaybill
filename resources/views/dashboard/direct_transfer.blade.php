@@ -74,7 +74,7 @@
                         <div class="alert bg-light-success alert-custom alert-light-success fade show mb-2"
                             role="alert">
                           
-                            <input type='hidden' id='expire' value='{{ $expiry_date }}'/>
+                            <input type='hidden' id='expire' value='30'/>
                             <H3>Guildline</H3>
                             <ul>
                                 <li>Transfer only the exact amount stated below.</li>

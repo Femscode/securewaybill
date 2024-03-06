@@ -26,11 +26,7 @@
                         <label class="col-xl-3 col-lg-3 col-form-label">Client ID</label>
                         <div class="col-lg-9 col-xl-6">
                             <div class="input-group input-group-lg input-group-solid">
-                                <div class="input-group-prepend">
-                                    <span class="form-control-lg input-group-text bg-soft-primary">
-                                        <i class="bi-person-badge"></i>
-                                    </span>
-                                </div>
+                               
                                 <input readonly id='client_id' value='{{ $waybill->client->username }}' type="text" name='client_id'
                                     class="form-control form-control-lg form-control-solid"
                                     placeholder="Input client ID" />
@@ -84,11 +80,7 @@
                         <label class="col-xl-3 col-lg-3 col-form-label">Product Name</label>
                         <div class="col-lg-9 col-xl-6">
                             <div class="input-group input-group-lg input-group-solid">
-                                <div class="input-group-prepend">
-                                    <span class="form-control-lg input-group-text bg-soft-primary">
-                                        <i class="bi-cart"></i>
-                                    </span>
-                                </div>
+                               
                                 <div class="">
                                     <input readonly value='{{ $waybill->product_name }}' name='product_name' class="form-control form-control-lg form-control-solid"
                                         type="text" placeholder="Iphone XMas" />
@@ -102,11 +94,7 @@
                         <label class="col-xl-3 col-lg-3 col-form-label">Amount</label>
                         <div class="col-lg-9 col-xl-6">
                             <div class="input-group input-group-lg input-group-solid">
-                                <div class="input-group-prepend">
-                                    <span class="form-control-lg input-group-text bg-soft-primary">
-                                        <i class="bi-bank"></i>
-                                    </span>
-                                </div>
+                               
                                 <input readonly value='{{ $waybill->subamount }}' id='amount' name='subtotal' type="number" class="form-control form-control-lg form-control-solid"
                                     placeholder="Input amount to pay" />
                             </div>
