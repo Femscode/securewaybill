@@ -306,6 +306,9 @@ class HomeController extends Controller
         $tranx =  $this->create_transaction('Funds Withdraw', $reference, $details, 'debit', $request->amount, $user->id, 2, $request->waybillId);
 
         $waybill->status = 4;
+        $title = "Waybill Withdrawal Request";
+        $this->create_activity($waybill->uid, $user->id, $title, $details, 7);
+       
         $waybill->save();
         // $data = array('username' => $user->name, 'tranx_id' => $tranx->id,  'amount' => $request->amount);
         // dd($data);

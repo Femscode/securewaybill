@@ -280,6 +280,21 @@ trait TransactionTrait
             });
 
         }
+        elseif($title == 'Waybill Withdrawal Request') {
+            $data = array('name' => $name, 'ref' => $ref, 'email' => $email, 'waybill' => $waybill);
+            Mail::send('mail.waybillwithdrawal', $data, function ($message) use ($email) {
+                $message->to($email)->subject('Withdrawal Request For Your Waybill!');
+                $message->from('info@securewaybill.com', 'SECUREWAYBILL');
+            });
+            //mail for client
+            
+            $data = array('name' => $clientname, 'ref' => $ref, 'email' => $clientemail, 'waybill' => $waybill);
+            Mail::send('mail.waybillwithdrawal', $data, function ($message) use ($clientemail) {
+                $message->to($clientemail)->subject('Withdrawal Request For Your Waybill');
+                $message->from('info@securewaybill.com', 'SECUREWAYBILL');
+            });
+
+        }
         else {
             //waybill deleted
             $data = array('name' => $name, 'ref' => $ref, 'email' => $email, 'waybill' => $waybill);
@@ -366,21 +381,13 @@ trait TransactionTrait
             $tranx->save();
             return $tranx->id;
         } elseif ($title == 'Funds Withdraw') {
-
-
-            if ($status == 1) {
-
-
-                $tranx->status = $status;
-                $tranx->save();
-                return $tranx;
-            } else {
+         
 
 
                 $tranx->status = $status;
                 $tranx->save();
                 return $tranx;
-            }
+          
 
             return $tranx->id;
         } elseif ($title == 'Cable Subscription') {

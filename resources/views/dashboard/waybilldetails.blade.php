@@ -45,7 +45,8 @@
                     <b>{{
                       $waybill->product_name }} (NGN{{ number_format($waybill->totalamount)
                       }})</b><br>
-                    Client : @if($user->id == $waybill->client_id)
+                    Client : 
+                    @if($user->id == $waybill->client_id)
                     {{ $waybill->self->name ?? "No name" }}
                     @else
                     {{ $waybill->client->name }}

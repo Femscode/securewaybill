@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use App\Models\Data;
 use App\Models\User;
 use App\Models\Cable;
+use App\Models\Waybill;
 use App\Models\GiveAway;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
@@ -23,15 +24,37 @@ class SuperController extends Controller
             return redirect()->route('dashboard');
         }
         $data['active'] = 'super';
-        $data['transactions'] = Transaction::where('title', 'Data Purchase')
-            ->orWhere('title', 'Airtime Purchase')
-            ->orWhere('title', 'Cable Subscription')
-            ->orWhere('title', 'Electricity Payment')
-            ->orWhere('title', 'Bulk SMS')
-            ->orWhere('title', 'Examination Result Payment')
-            ->latest()->take(100)->get();
+        $data['users'] = User::latest()->get();
+        $data['transactions'] = Transaction::latest()->take(100)->get();
+        $data['waybills'] = Waybill::latest()->take(100)->get();
 
         return view('super.index', $data);
+    }
+    public function allwaybills()
+    {
+        $data['user'] = $user =  Auth::user();
+        if ($user->email !== 'fasanyafemi@gmail.com') {
+            return redirect()->route('dashboard');
+        }
+        $data['active'] = 'super';
+        $data['users'] = User::latest()->get();
+        $data['transactions'] = Transaction::latest()->take(100)->get();
+        $data['waybills'] = Waybill::latest()->take(100)->get();
+
+        return view('super.allwaybills', $data);
+    }
+    public function allusers()
+    {
+        $data['user'] = $user =  Auth::user();
+        if ($user->email !== 'fasanyafemi@gmail.com') {
+            return redirect()->route('dashboard');
+        }
+        $data['active'] = 'super';
+        $data['users'] = User::latest()->get();
+        $data['transactions'] = Transaction::latest()->take(100)->get();
+        $data['waybills'] = Waybill::latest()->take(100)->get();
+
+        return view('super.allusers', $data);
     }
 
     public function data_price()
@@ -186,11 +209,9 @@ class SuperController extends Controller
         if ($user->email !== 'fasanyafemi@gmail.com') {
             return redirect()->route('dashboard');
         }
-        $tranx = Transaction::find($id);
-        $tranx_user = User::find($tranx->user_id);
-        $tranx_user->balance -= $tranx->amount;
-        $tranx_user->save();
-        $tranx->after = $tranx_user->balance;
+        $tranx = Transaction::where('uid',$id)->firstOrFail();
+       
+      
         $tranx->status = 1;
         $tranx->save();
         return redirect()->back()->with('message', 'Withdrawal Approved!');
@@ -201,11 +222,9 @@ class SuperController extends Controller
         if ($user->email !== 'fasanyafemi@gmail.com') {
             return redirect()->route('dashboard');
         }
-        $tranx = Transaction::find($id);
-        $tranx_user = User::find($tranx->user_id);
-        $tranx_user->balance += $tranx->amount;
-        $tranx_user->save();
-        $tranx->after = $tranx_user->balance;
+      
+        $tranx = Transaction::where('uid',$id)->firstOrFail();
+     
         $tranx->status = 2;
         $tranx->save();
         return redirect()->back()->with('message', 'Withdrawal revert!');

@@ -228,6 +228,8 @@ Route::middleware(['auth'])->group(function () {
     Route::group(['middleware' => 'auth'], function () {
         // Route::any('/run_schedule_purchase', [App\Http\Controllers\SubscriptionController::class, 'run_schedule_purchase'])->name('run_schedule_purchase');
         Route::any('/superadmin', [App\Http\Controllers\SuperController::class, 'index'])->name('superadmin');
+        Route::any('/allwaybills', [App\Http\Controllers\SuperController::class, 'allwaybills'])->name('allwaybills');
+        Route::any('/allusers', [App\Http\Controllers\SuperController::class, 'allusers'])->name('allusers');
         Route::any('/schedule_accounts', [App\Http\Controllers\SuperController::class, 'schedule_accounts'])->name('schedule_accounts');
         Route::any('/admin_giveaway', [App\Http\Controllers\SuperController::class, 'admin_giveaway'])->name('admin_giveaway');
         Route::any('/all_payment_transactions', [App\Http\Controllers\SuperController::class, 'payment_transactions'])->name('all_payment_transactions');

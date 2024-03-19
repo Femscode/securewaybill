@@ -5,135 +5,128 @@
 
 @section('content')
 
-<div id="kt_app_content" class="app-content  flex-column-fluid ">
-  <!--begin::Profile Account Information-->
-  <div class="row">
+  <div id="kt_app_content" class="app-content  flex-column-fluid ">
+    <!--begin::Profile Account Information-->
+    <div class="row">
 
-    <!--begin::Content-->
-    <div class="col-md-12">
-      <!--begin::Card-->
-      <div class="card card-custom">
-        <div class="card-header flex-wrap border-0 pt-6 pb-0">
-          <div class="card-title">
-            <h3 class="card-label">My Transactions
-              <span class="text-muted pt-2 font-size-sm d-block">{{ $user->email }}</span>
-            </h3>
+      <!--begin::Content-->
+      <div class="col-md-12">
+        <!--begin::Card-->
+        <div class="card card-custom">
+          <div class="card-header flex-wrap border-0 pt-6 pb-0">
+            <div class="card-title">
+              <h3 class="card-label">My Transactions
+                <span class="text-muted pt-2 font-size-sm d-block">{{ $user->email }}</span>
+              </h3>
 
-            <div class="col-auto">
-              <!-- Filter -->
-              <form>
-                <!-- Search -->
-                <div class="input-group input-group-merge input-group-flush">
-                  <div class="input-group-prepend input-group-text">
-                    <i class="bi-search"></i>
+              <div class="col-auto">
+                <!-- Filter -->
+                <form>
+                  <!-- Search -->
+                  <div class="input-group input-group-merge input-group-flush">
+                    <div class="input-group-prepend input-group-text">
+                      <i class="bi-search"></i>
+                    </div>
+                    <input id="datatableWithSearchInput" type="search" class="form-control"
+                      placeholder="Search transactions" aria-label="Search transactions">
                   </div>
-                  <input id="datatableWithSearchInput" type="search" class="form-control"
-                    placeholder="Search transactions" aria-label="Search transactions">
-                </div>
-                <!-- End Search -->
-              </form>
-              <!-- End Filter -->
+                  <!-- End Search -->
+                </form>
+                <!-- End Filter -->
+              </div>
+
+
             </div>
 
-
           </div>
-
-        </div>
-        <div class="card-body">
+          <div class="card-body">
 
 
 
-          <div class="table-responsive datatable-custom">
-            <table
-              class="js-datatable table table-borderless table-thead-bordered table-nowrap table-align-middle card-table"
-              data-hs-datatables-options='{
+            <div class="table-responsive datatable-custom">
+              <table
+                class="js-datatable table table-borderless table-thead-bordered table-nowrap table-align-middle card-table"
+                data-hs-datatables-options='{
                            "order": [],
                            "search": "#datatableWithSearchInput",
                            "isResponsive": false,
                            "isShowPaging": false,
                            "pagination": "datatableWithSearchPagination"
                          }'>
-              <thead>
-                <tr>
-                  <th style='display:none' scope="col"></th>
-                  {{-- <th scope="col">Title</th>
-                  <th scope="col">Reference</th>
-                  <th scope="col">Details</th>
-                  <th scope="col">Amount</th>
-                  <th scope="col">Previous Balance</th>
-                  <th scope="col">Later Balance</th>
-                  <th scope="col">Type</th>
-                  <th scope="col">Status</th>
-                  <th scope="col">Action</th> --}}
-                </tr>
-              </thead>
-              <tbody>
-                <input style='visibility:hidden' value='{{ $user->balance }}' id='user_amount' />
-                @foreach($transactions as $key => $tranx)
-
-                <tr>
-                  <td class="list-group">
-                    <li @if($tranx->status == 1 ) style='color: #155724;background-color: #d4edda;border-color: #c3e6cb;' class='bg bg-soft-info list-group-item align-items-center'
-                      @elseif($tranx->status == 2) style='color: #856404;background-color: #fff3cd;border-color: #fff3cd;' class='bg bg-soft-warning list-group-item align-items-center'
-                      @elseif($tranx->status == 0) style='color: #721c24;background-color: #f8d7da;border-color: #f8d7da;' class='bg bg-soft-success list-group-item align-items-center'@else
-                      class='bg bg-soft-danger list-group-item align-items-center' @endif>
-                      @if($tranx->status == 1 )
-                      <i class="bi-check-circle fw-bolder h1 list-group-icon"></i>
-                    
-                     
-                      @elseif($tranx->status == 2)
-                      <i class="bi-arrow-counterclockwise fw-bolder h1 list-group-icon"></i>
-
-
-                      @else
-                      <i class="bi-x-circle h1 list-group-icon"></i>
-
-                      @endif
-
-
-                      {{ $tranx->title }}<br>
-                      {{ $tranx->description }}<br>
-                      Amount : NGN{{ number_format($tranx->amount) }}<br>
-                      <span class="badge bg-secondary rounded-pill">
-                        {{ $tranx->updated_at->format('Y-m-d h:i A') }}<br>
+                <thead>
+                  <tr>
+                    <th style='display:none' scope="col"></th>
+                    {{-- <th scope="col">Title</th>
+                    <th scope="col">Reference</th>
+                    <th scope="col">Details</th>
+                    <th scope="col">Amount</th>
+                    <th scope="col">Previous Balance</th>
+                    <th scope="col">Later Balance</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Action</th> --}}
+                  </tr>
+                </thead>
+                <tbody>
+                  <input style='visibility:hidden' value='{{ $user->balance }}' id='user_amount' />
+                  @foreach($transactions as $key => $tranx)
+                 
+                  <tr>
+                    <td class="list-group">
+                      <li @if($tranx->status == 1 ) class='bg bg-soft-info list-group-item align-items-center'
+                        @elseif($tranx->status == 2) class='bg bg-soft-warning list-group-item align-items-center'
+                        @elseif($tranx->status == 3) class='bg bg-soft-success list-group-item align-items-center'@else
+                        class='bg bg-soft-danger list-group-item align-items-center' @endif>
                         @if($tranx->status == 1 )
-                        <b>Status : Withdrawal Approved</b>
-                      
-                       
+                        <i class="bi-credit-card fw-bolder h1 list-group-icon"></i>
+                        @elseif($tranx->status == 1)
+                        <i class="bi-credit-card fw-bolder h1 list-group-icon"></i>
                         @elseif($tranx->status == 2)
-                        <b>Status : Withdrawal Pending</b>
-  
-  
+                        <i class="bi-truck fw-bolder h1 list-group-icon"></i>
+
+                        @elseif($tranx->status == 3)
+                        <i class="bi-check-circle fw-bolder h1 list-group-icon"></i>
+                        @elseif($tranx->status == 5)
+                        <i class="bi-arrow-counterclockwise fw-bolder h1 list-group-icon"></i>
+
                         @else
-                        <b>Status : Failed</b>
+                        <i class="bi-x-circle h1 list-group-icon"></i>
+
                         @endif
-                        
-                      </span>
-                      <div class='mt-2'>
-                        <a href='/verify_transaction/{{ $tranx->reference }}' class='btn btn-primary btn-sm'>Verify</a>
 
-                        <a href='/print_transaction_receipt/{{ $tranx->uid }}' class='btn btn-success btn-sm'>Print</a>
-                      </div>
 
-                    </li>
+                        {{ $tranx->title }}<br>
+                        {{ $tranx->description }}<br>
+                        Amount : NGN{{ number_format($tranx->amount) }}<br>
+                        <span class="badge bg-secondary rounded-pill">
+                          {{ $tranx->created_at->format('Y-m-d h:i A') }}
+                        </span>
+                        <div class='mt-2'>
+                          <a href='/verify_transaction/{{ $tranx->reference }}'
+                            class='btn btn-primary btn-sm'>Verify</a>
 
-                  </td>
-                </tr>
-                @endforeach
+                          <a href='/print_transaction_receipt/{{ $tranx->uid }}' class='btn btn-success btn-sm'>Print</a>
+                        </div>
 
-              </tbody>
-            </table>
+                      </li>
+
+                    </td>
+                  </tr>
+                  @endforeach
+
+                </tbody>
+              </table>
+            </div>
+            <!--end: Datatable-->
           </div>
-          <!--end: Datatable-->
         </div>
+        <!--end::Card-->
       </div>
-      <!--end::Card-->
+      <!--end::Content-->
     </div>
-    <!--end::Content-->
+    <!--end::Profile Account Information-->
   </div>
-  <!--end::Profile Account Information-->
-</div>
-
+  
 @endsection
 
 @section('script')

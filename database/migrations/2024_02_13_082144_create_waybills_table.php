@@ -19,6 +19,8 @@ class CreateWaybillsTable extends Migration
     // 4 for canceled
     // 5 for uncanceled
     // 6 for deleted
+
+    //7 for withdrawed 
     public function up()
     {
         Schema::create('waybills', function (Blueprint $table) {

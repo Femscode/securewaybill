@@ -16,23 +16,20 @@
                 <div class="card card-custom">
                     <div class="card-header flex-wrap border-0 pt-6 pb-0">
                         <div class="card-title">
-                            <h3 class="card-label">User Transactions
-                            </h3>
+                            <h5 class="card-label">All Transactions
+                            </h5>
                         </div>
                      
                     </div>
                     <div class="card-body">
-                        <div class='col-md-6'>
-                            <input type="text" class="form-control" placeholder="Search..." id="searchTable">
-                            </div>
+                       
                         <table class="datatable table table-striped">
                             <thead>
                                 <tr>
                                     <th scope="col">Reference</th>
                                     <th scope="col">Details</th>
                                     <th scope="col">Amount</th>
-                                    <th scope="col">Before</th>
-                                    <th scope="col">After</th>
+                                  
                                     <th scope="col">Type</th>
                                     <th scope="col">Status</th>
                                     <th scope="col">Action</th>
@@ -46,20 +43,25 @@
                                     <td>{{ $tranx->reference }}<br><span class='text-danger'>{{ $tranx->user->name ?? ""}}</span><br><span class='text-success'>{{ $tranx->user->brand->brand_name ?? "Big Pel" }}</span></td>
                                     <td>{{ $tranx->description }}</td>
                                     <td>₦{{ number_format($tranx->amount) }}</td>
-                                    <td>₦{{ number_format($tranx->before) }}</td>
-                                    <td>₦{{ number_format($tranx->after) }}</td>
+                                  
                                     <td>{{ $tranx->type }}</td>
                                     <td>
                                         {{ Date('d-m-Y H:i',strtotime($tranx->created_at)) }}
                                         @if($tranx->status == 1)
-                                        <span class='badge badge-light-success'>Success</span>
+                                        <span class='p-1 bg-success text-white'>Success</span>
+                                        @elseif($tranx->status == 2)
+                                        <span class='p-1 bg-warning'>Pending</span>
                                         @else
-                                        <span class='badge badge-light-danger'>Failed</span>
+                                        <span class='p-1 bg-danger text-white'>Failed</span>
                                         @endif
                                     
                                     </td>
                                     <td>
-                                        <a href='/fund_wallet/{{ $tranx->user->uuid ?? "" }}' class='btn btn-warning btn-sm'>Fund Wallet</a>
+                                        @if($tranx->status == 2)
+                                        <a href='/approve_withdraw/{{ $tranx->uid ?? "" }}' onclick='return confirm("Are you sure you want to approve this transaction")' class='btn btn-warning btn-sm'>Approve Withdrawal</a>
+                                        @elseif($tranx->status == 1)
+                                        <a href='/revert_withdraw/{{ $tranx->uid ?? "" }}' onclick='return confirm("Are you sure you want to disapprove this transaction")' class='btn btn-danger btn-sm'>Dissaprove Withdrawal</a>
+                                        @endif
                                         <a href='https://wa.me/{{ substr($tranx->user->phone ?? "09058744473", 1) }}' class='btn btn-success btn-sm'>Message</a>
                                         <a href='/print_transaction_receipt/{{ $tranx->id }}' class='btn btn-info btn-sm'>Print</a>
                                     </td>

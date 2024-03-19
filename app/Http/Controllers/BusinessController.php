@@ -881,8 +881,9 @@ class BusinessController extends Controller
         $company = Auth::user();
         if ($user->company_id == $company->id || $company->email == 'fasanyafemi@gmail.com') {
             $data['user'] = $user;
+            $data['active'] = 'users';
             $data['transactions'] = Transaction::where('user_id', $user->id)->latest()->get();
-            return view('business_backend.user_transactions', $data);
+            return view('super.user_transactions', $data);
         } else {
             return Redirect()->route('dashboard')->with('Message', 'Permission Denied');
         }

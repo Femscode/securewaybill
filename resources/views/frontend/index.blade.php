@@ -181,7 +181,7 @@
     <header class="header navbar navbar-expand-lg position-absolute navbar-sticky">
       <div class="container px-3">
         <a href="index.html" class="navbar-brand pe-3">
-          <img src="assets/img/logo.svg" width="47" alt="SWB">
+          {{-- <img src="assets/img/logo.svg" width="47" alt="SWB"> --}}
           SWB
         </a>
         <div id="navbarNav" class="offcanvas offcanvas-end">
@@ -805,7 +805,7 @@
       <div class="row pb-5">
         <div class="col-lg-4 col-md-6">
           <div class="navbar-brand text-dark p-0 me-0 mb-3 mb-lg-4">
-            <img src="assets/img/logo.svg" width="47" alt="SWB">
+            {{-- <img src="assets/img/logo.svg" width="47" alt="SWB"> --}}
             SWB
           </div>
           <p class="fs-sm pb-lg-3 mb-4">Securewaybill protects your online transaction from fraudulent activities.</p>
